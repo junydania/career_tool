@@ -13,15 +13,10 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
-//= require_tree ./js
-//= require_tree ./pages
 //= require twitter/bootstrap
 //= require turbolinks
 //= require dataTables/jquery.dataTables
-//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
-
-
 
 
 
