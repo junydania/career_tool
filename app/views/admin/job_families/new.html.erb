@@ -17,13 +17,12 @@
                   <code>New Job Family</code>
                 </p>
 
-                <%= form_for new_admin_job_family_path, html: { multipart: true  } do |f| %>
+                <%= form_for new_admin_job_family_path  do |f| %>
                   <div class="form-group">
                     <%= f.label :family_name %>
                     <%= f.text_field :family_name, autofocus: true, :class => "form-control" %>
                   </div>
-                  <%= f.submit "Submit", class: "btn btn-purple waves-effect waves-light" %>
-                  <!--<button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>-->
+                  <%= f.submit "Submit", class: "btn btn-purple" %>
                 <% end %>
               </div><!-- end col -->
             </div><!-- end row -->
@@ -41,9 +40,28 @@
 
 </div>
 
-<script>
-    var resizefunc = [];
-</script>
+<%= content_for :after_body do %>
+
+    <script>
+        var resizefunc = [];
+    </script>
+
+    <!-- jQuery  -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/detect.js"></script>
+    <script src="/assets/js/fastclick.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/jquery.blockUI.js"></script>
+    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/jquery.nicescroll.js"></script>
+    <script src="/assets/js/jquery.scrollTo.min.js"></script>
+
+    <script src="/assets/js/jquery.core.js"></script>
+    <script src="/assets/js/jquery.app.js"></script>
+
+
+<% end %>
 
 <!-- ============================================================== -->
 <!-- End Right content here -->
