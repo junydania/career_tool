@@ -17,6 +17,8 @@ Feature: As an administrator
     And I click on "Log In"
     And I click on "Job Family"
     And I click on "Create Job Family"
-    And I click on "Save"
-    Then I should see "Job Family Successfully Created"
+    And I fill in field 'Family Name' with 'Business Development'
+    And I click on "Submit"
+    Then show page
+    Then I should see "Job Family successfully added"
 

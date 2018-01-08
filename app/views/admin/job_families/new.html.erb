@@ -17,12 +17,13 @@
                   <code>New Job Family</code>
                 </p>
 
-                <%= form_for new_admin_job_family_path  do |f| %>
+                <%= form_for([:admin, @job_family], html: { multipart: true }) do |f| %>
                   <div class="form-group">
-                    <%= f.label :family_name %>
+                    <%= f.label :family_name, 'Family Name' %>
                     <%= f.text_field :family_name, autofocus: true, :class => "form-control" %>
                   </div>
                   <%= f.submit "Submit", class: "btn btn-purple" %>
+                  <%= flash[:notice] %>
                 <% end %>
               </div><!-- end col -->
             </div><!-- end row -->
