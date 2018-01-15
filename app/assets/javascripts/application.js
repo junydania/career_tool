@@ -16,6 +16,7 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require dataTables/jquery.dataTables
+//= require cocoon
 //= require_tree .
 
 

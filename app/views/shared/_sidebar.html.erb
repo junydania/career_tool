@@ -5,7 +5,7 @@
     <div class="user-box">
       <div class="user-img">
         <%= image_tag "users/employee.png", :alt => "user-img", :title => "Mat Helme", :class => "img-circle img-thumbnail img-responsive" %>
-            <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
+            <div class="user-status offline"><i class="fa fa-check-circle-o"></i></div>
       </div>
       <h5><a href="#">Mat Helme</a> </h5>
       <ul class="list-inline">
@@ -32,10 +32,10 @@
         </li>
 
         <li class="has_sub">
-          <a href="javascript:void(0); class="waves-effect"><i class="fa fa-cubes"></i> <span> Job </span> <span class="menu-arrow"></span></a>
+          <a href="javascript:void(0); class="waves-effect"><i class="fa fa-cubes"></i> <span>Job</span> <span class="menu-arrow"></span></a>
           <ul class="list-unstyled">
-            <li><%= link_to "Create Job" %></li>
-            <li><%= link_to "View Job" %></li>
+            <li><%= link_to "Create Job", new_admin_job_path %></li>
+            <li><%= link_to "View Job", admin_jobs_path%></li>
           </ul>
         </li>
 

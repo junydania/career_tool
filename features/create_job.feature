@@ -1,13 +1,13 @@
-Feature: As a user or administrator
-  In order to store videos in the catalogue
-  I should login to the dashboard to add a new video to the system
+Feature: As an administrator
+  In order to let users select available jobs
+  I should create new jobs in the system
 
 
   Background:
 
     Given the following user account exist
       | email                | first_name  | last_name | password | password_confirmation | role           |
-      | o.dania@laffhub.com  | Osegbemoh   | Dania     | 12345678 | 12345678              | administrator  |
+      | o.dania@laffhub.com  | Osegbemoh   | Dania     | 12345678 | 12345678              | manager        |
 
 
     And the following job families exist
@@ -26,7 +26,7 @@ Feature: As a user or administrator
 
 
     And the following divisions exist
-      | divison_name           |
+      | division_name           |
       | Projects               |
       | Operations             |
 
@@ -51,13 +51,23 @@ Feature: As a user or administrator
 
   Scenario:
     Given I visit the "sign_in" landing page
-    And I fill in field "user_email" with "o.dania@icloud.com"
+    And I fill in field "user_email" with "o.dania@laffhub.com"
     And I fill in field "user_password" with "12345678"
     And I click on "Log In"
+    Then show page
     And I click on "Job"
     And I click on "Create Job"
-    And I fill in field 'Unit Name' with 'Retail Technology'
+    And I fill in field 'Name' with 'Manager, IT Infrastructure'
+    And I select "12" from "SBG"
+    And I select "Retail Technology" from "Job Division"
+    And I select "Infrastructure" from "Business Units"
+    And I select "Projects" from "Dvision"
+    And I select "Upcountry" from "Organizational Units"
+    And I select "Revenue Assurance" from "Primary Clusters"
+    And I select "Business Development" from "Secondary Clusters"
+    And I fill in field 'Competency' with 'OOP and Ruby on Rails skills'
+    And I fill in field 'Competency' with 'AWS & Google Compute skills required'
+    And I fill in field 'Competency' with 'Experience workign with Vagrant & Docker'
     And I click on "Submit"
-    Then I should see "New Business Unit Successfully Added"
-
+    Then I should see "New Job Successfully Added"
 
