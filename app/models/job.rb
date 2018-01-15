@@ -12,7 +12,7 @@ class Job < ApplicationRecord
   belongs_to :secondary_cluster
   belongs_to :work_level
 
-  before_save :capitalize_level_name
+  before_save :capitalize_job_name
 
 
 

@@ -48,26 +48,30 @@ Feature: As an administrator
       | Business Management               |
       | Business Development              |
 
+    And the following work level exist
+      | level_name                        |
+      | Head                              |
+      | Manager                           |
+
 
   Scenario:
     Given I visit the "sign_in" landing page
     And I fill in field "user_email" with "o.dania@laffhub.com"
     And I fill in field "user_password" with "12345678"
     And I click on "Log In"
-    Then show page
     And I click on "Job"
     And I click on "Create Job"
-    And I fill in field 'Name' with 'Manager, IT Infrastructure'
-    And I select "12" from "SBG"
-    And I select "Retail Technology" from "Job Division"
-    And I select "Infrastructure" from "Business Units"
-    And I select "Projects" from "Dvision"
-    And I select "Upcountry" from "Organizational Units"
-    And I select "Revenue Assurance" from "Primary Clusters"
-    And I select "Business Development" from "Secondary Clusters"
-    And I fill in field 'Competency' with 'OOP and Ruby on Rails skills'
-    And I fill in field 'Competency' with 'AWS & Google Compute skills required'
-    And I fill in field 'Competency' with 'Experience workign with Vagrant & Docker'
-    And I click on "Submit"
+    And I fill in field 'Job Name' with 'Manager, IT Infrastructure'
+    And I select "12" from "SBG Grades"
+    And I select "Retail Technology" from "Job Family"
+    And I select "Infrastructure" from "Business Unit"
+    And I select "Projects" from "Division"
+    And I select "Upcountry" from "Organizational Unit"
+    And I select "Revenue Assurance" from "Primary Cluster"
+    And I select "Business Development" from "Secondary Cluster"
+    And I select "Head" from "Work Level"
+    And I click on "Add Skill"
+    And I fill in field 'Skill' with 'OOP and Ruby on Rails skills'
+    And I click on "Submit New Job"
     Then I should see "New Job Successfully Added"
 

@@ -20,6 +20,7 @@
           <div class="col-sm-12">
             <div class="card-box">
               <h4 class="header-title m-t-0 m-b-30">New Job</h4>
+              <%= flash[:notice] %>
               <div class="row">
                 <div class="col-md-6">
                   <div class="p-20">
@@ -28,25 +29,23 @@
                     <!--<input type="text" class="form-control" name="defaultconfig" id="defaultconfig" />-->
 
                     <div class="m-t-20">
-                      <h5><b>SBG Grades</b></h5>
+                      <h5><b><%= f.label :sbg_grade, 'SBG Grades' %></b></h5>
                       <%= f.select :sbg_grade, options_for_select((1..15).map {|i| ["SBG#{i}", i]}.unshift(['Select Grade', nil])), :class =>'form-control', :id=>'job_style' %>
-                      <!--<select class="form-control">-->
-                        <!--<option>1</option>-->
-                        <!--<option>2</option>-->
-                        <!--<option>3</option>-->
-                        <!--<option>4</option>-->
-                        <!--<option>5</option>-->
-                      <!--</select>-->
                     </div>
 
                     <div class="m-t-20">
                       <h5><b><%= f.label :business_unit_id, 'Business Unit' %></b></h5>
-                      <%= f.select :business_unit_id, options_from_collection_for_select(@business_units, :id, :unit_name, @job.business_unit_id), class:'form-control', id:'job_style', style: 'width: 100%;', include_blank: 'Select a Business Unit' %>
+                      <%= f.collection_select(:business_unit_id, @business_units, :id, :unit_name, class:'form-control select', style: 'width: 100%;', include_blank: 'Select a Business Unit') %>
                     </div>
 
                     <div class="m-t-20">
                       <h5><b><%= f.label :organizational_unit_id, 'Organizational Unit' %></b></h5>
-                      <%= f.select :organizational_unit_id, options_from_collection_for_select(@organizational_units, :id, :unit_name, @job.organizational_unit_id), class:'form-control', id:'job_style', style: 'width: 100%;', include_blank: 'Select an Organizational Unit' %>
+                      <%= f.collection_select(:organizational_unit_id, @organizational_units, :id, :unit_name, class:'form-control select', style: 'width: 100%;', include_blank: 'Select an Organizational Unit') %>
+                    </div>
+
+                    <div class="m-t-20">
+                      <h5><b><%= f.label :work_level_id, 'Work Level' %></b></h5>
+                      <%= f.collection_select(:work_level_id, @work_level, :id, :level_name, class:'form-control select', style: 'width: 100%;', include_blank: 'Select an Organizational Unit') %>
                     </div>
 
                   </div>
@@ -55,23 +54,22 @@
                 <div class="col-md-6">
                   <div class="p-20">
                     <h5><b><%= f.label :division_id, 'Division' %></b></h5>
-                    <%= f.select :division_id, options_from_collection_for_select(@divisions, :id, :division_name, @job.division_id), class:'form-control', id:'job_style', style: 'width: 100%;', include_blank: 'Select a Division' %>
+                    <%= f.collection_select(:division_id, @divisions, :id, :division_name, class:'form-control select', style: 'width: 100%;', include_blank: 'Select a Division') %>
 
                     <div class="m-t-20">
                       <h5><b><%= f.label :job_family_id, 'Job Family' %></b></h5>
-                      <%= f.select :job_family_id, options_from_collection_for_select(@job_families, :id, :family_name, @job.job_family_id), class:'form-control', id:'job_style', style: 'width: 100%;', include_blank: 'Select a Job Family' %>
+                      <%= f.collection_select(:job_family_id, @job_families, :id, :family_name, class:'form-control select', style: 'width: 100%;', include_blank: 'Select a Job Family') %>
                     </div>
 
                     <div class="m-t-20">
                       <h5><b><%= f.label :primary_cluster_id, 'Primary Cluster' %></b></h5>
-                      <%= f.select :primary_cluster_id, options_from_collection_for_select(@primary_clusters, :id, :cluster_name, @job.primary_cluster_id), class:'form-control', id:'job_style', style: 'width: 100%;', include_blank: 'Select a Primary Cluster' %>
+                      <%= f.collection_select(:primary_cluster_id, @primary_clusters, :id, :cluster_name, class:'form-control select', style: 'width: 100%;', include_blank: 'Select a Primary Cluster') %>
                     </div>
 
                     <div class="m-t-20">
                       <h5><b><%= f.label :secondary_cluster_id, 'Secondary Cluster' %></b></h5>
-                      <%= f.select :secondary_cluster_id, options_from_collection_for_select(@secondary_clusters, :id, :cluster_name, @job.secondary_cluster_id), class:'form-control', id:'job_style', style: 'width: 100%;', include_blank: 'Select a Secondary Cluster' %>
+                      <%= f.collection_select(:secondary_cluster_id, @secondary_clusters, :id, :cluster_name, class:'form-control select', style: 'width: 100%;', include_blank: 'Select a Secondary Family') %>
                     </div>
-
                   </div>
                 </div><!-- end col -->
               </div><!-- end row -->
@@ -84,33 +82,27 @@
           <div class="col-sm-12">
             <div class="card-box">
               <h4 class="header-title m-t-0 m-b-30">Competences</h4>
-              <%= f.fields_for :competences, Competence.new do |competence| %>
-                  <!--<div class="row">-->
-                    <!--<div class="col-md-6">-->
-                      <!--<div class="p-20">-->
-                        <!--<div class="m-t-20">-->
-                          <!--<h5><b><%= competence.label :skill %></h5>-->
-                          <!--<%= competence.text_field :skill, autofocus: true, :class => "form-control" %>-->
-                        <!--</div>-->
-                      <!--</div>-->
-                    <!--</div>&lt;!&ndash; end col &ndash;&gt;-->
-                  <!--</div>&lt;!&ndash; end row &ndash;&gt;-->
-                  <%= render 'competence_field', f: competence %>
-
-                  <div class="links">
-                    <%= link_to_add_association 'add competence', f, :competences %>
-                  </div>
-
-              <% end %>
+              <div id='competences'>
+                <%= f.fields_for :competences, Competence.new do |competence| %>
+                    <%= render 'competence_fields', f: competence %>
+                    <div class="links">
+                      <%= link_to_add_association 'Add Skill', f, :competences, class: "btn btn-purple" %>
+                    </div>
+                <% end %>
+                <br>
+                <p class="count">Total Skills: <span><%= @job.competences.count %></span></p>
+              </div>
             </div>
           </div><!-- end col -->
         </div>
-
+        <%= f.submit "Submit New Job", class: "btn btn-success" %>
       <% end %>
     </div> <!-- container -->
 
 
   </div> <!-- content -->
+
+  <br>
 
   <footer class="footer">
     2018 © Stanbic IBTC

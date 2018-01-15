@@ -34,7 +34,13 @@ Given("the following secondary clusters exist") do |table|
   end
 end
 
-Given("I select {string} from {string}") do |string, string2|
-  pending # Write code here that turns the phrase above into concrete actions
+Given("I select {string} from {string}") do |choice, options|
+  select(choice, from: options)
+end
+
+Given("the following work level exist") do |table|
+  table.hashes.each do |hash|
+    FactoryBot.create(:work_level, hash)
+  end
 end
 

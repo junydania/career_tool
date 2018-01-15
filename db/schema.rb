@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115163542) do
+ActiveRecord::Schema.define(version: 20180115202055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,12 +52,14 @@ ActiveRecord::Schema.define(version: 20180115163542) do
     t.bigint "division_id"
     t.bigint "primary_cluster_id"
     t.bigint "secondary_cluster_id"
+    t.bigint "work_level_id"
     t.index ["business_unit_id"], name: "index_jobs_on_business_unit_id"
     t.index ["division_id"], name: "index_jobs_on_division_id"
     t.index ["job_family_id"], name: "index_jobs_on_job_family_id"
     t.index ["organizational_unit_id"], name: "index_jobs_on_organizational_unit_id"
     t.index ["primary_cluster_id"], name: "index_jobs_on_primary_cluster_id"
     t.index ["secondary_cluster_id"], name: "index_jobs_on_secondary_cluster_id"
+    t.index ["work_level_id"], name: "index_jobs_on_work_level_id"
   end
 
   create_table "levels", force: :cascade do |t|
@@ -117,4 +119,5 @@ ActiveRecord::Schema.define(version: 20180115163542) do
   add_foreign_key "jobs", "organizational_units"
   add_foreign_key "jobs", "primary_clusters"
   add_foreign_key "jobs", "secondary_clusters"
+  add_foreign_key "jobs", "work_levels"
 end
