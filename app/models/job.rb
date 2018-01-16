@@ -14,6 +14,15 @@ class Job < ApplicationRecord
 
   before_save :capitalize_job_name
 
+  validates_presence_of  :job_name,
+                         :sbg_grade,
+                         :business_unit_id,
+                         :division_id,
+                         :job_family_id,
+                         :organizational_unit_id,
+                         :primary_cluster_id,
+                         :secondary_cluster_id,
+                         :work_level_id
 
 
 
